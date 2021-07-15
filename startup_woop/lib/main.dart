@@ -2,9 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-//不提示？？？why
+//vscode只提示/后面，android studio 🐂🍺
 import 'package:english_words/english_words.dart';
-import 'english_words';
 import 'package:flutter/material.dart';
 
 //MARK: 格式化代码快捷键：全选，然后依次按下 cmd+k, cmd+f
