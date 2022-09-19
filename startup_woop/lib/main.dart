@@ -44,6 +44,27 @@ void testFutureWait() {
   });
 }
 
+void testStream() {
+  Stream.fromFutures([
+    Future.delayed(Duration(seconds: 1), (){
+      return "hello1";
+    }),
+    Future.delayed(Duration(seconds:2), (){
+      return AssertionError("error"); //will goto event
+    }),
+    Future.error("error!!!"),//will goto onError
+    Future.delayed(Duration(seconds: 3),(){
+      return "hello 3";
+    })
+  ]).listen((event) {
+    print(event);
+  },onError:(err) {
+    print("error:just .error can come in！---" + err);
+  }, onDone:() {
+    print("done");
+  });
+}
+
 class MyApp extends StatelessWidget {
   const MyApp();
 
@@ -51,7 +72,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final wordPair = WordPair.random();
     // testFutureDalay();
-    testFutureWait();
+    // testFutureWait();
+    testStream();
+
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
